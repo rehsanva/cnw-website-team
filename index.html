@@ -4,6 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Músicas</title>
+    <style>
+        :root {
+            --cor-principal: #6200ea; /* Roxo vibrante */
+            --cor-secundaria: #03dac6; /* Turquesa */
+            --fundo: #121212; /* Dark mode moderno */
+            --texto: #ffffff;
+        }
+    
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--fundo);
+            color: var(--texto);
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+    
+        /* Menu Navegação */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+    
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+    
+        .menu a:hover {
+            color: var(--cor-secundaria);
+        }
+    
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1514525253361-bee8a187499b?auto=format&fit=crop&w=1300&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+    
+        .btn-principal {
+            background: var(--cor-principal);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+    
+        .btn-principal:hover {
+            transform: scale(1.1);
+            background: #7c4dff;
+        }
+    
+        /* Grid de Estilos */
+        .container { padding: 80px 10%; }
+        
+        .grid-estilos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+    
+        .card-estilo {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #333;
+        }
+    
+        .card-estilo:hover {
+            border-color: var(--cor-secundaria);
+            transform: translateY(-10px);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,25 +116,39 @@
             </div>
         </nav>
     </header>
-    <main class="menu">
-        <section id="home">
-            <h1>Home</h1>
-            <br>
+    <<main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Sintonize sua Emoção</h1>
+                <p>Explore ritmos, descubra clássicos e mergulhe no universo sonoro que preparamos para você.</p>
+                <a href="#estilos" class="btn-principal">Explorar Estilos</a>
+            </div>
         </section>
-
-        <section id="rock">
-        <h1>Rock</h1>
-        <br>
-        </section>
-
-        <section id="pop">
-            <h1>Pop</h1>
-            <br>
-        </section>
-
-        <section id="contato">
-            <h1>Contato</h1>
-            <br>
+    
+        <section id="estilos" class="container">
+            <h2 class="titulo-sessao">Nossos Gêneros</h2>
+            <div class="grid-estilos">
+                <div class="card-estilo rock">
+                    <h3>Rock</h3>
+                    <p>A energia das guitarras.</p>
+                    <a href="rock.html">Ver mais</a>
+                </div>
+                <div class="card-estilo pop">
+                    <h3>Pop</h3>
+                    <p>O topo das paradas.</p>
+                    <a href="pop.html">Ver mais</a>
+                </div>
+                <div class="card-estilo classica">
+                    <h3>Clássica</h3>
+                    <p>A beleza da harmonia.</p>
+                    <a href="musicaclassica.html">Ver mais</a>
+                </div>
+                <div class="card-estilo sertanejo">
+                    <h3>Sertanejo</h3>
+                    <p>A voz do coração.</p>
+                    <a href="sertanejo.html">Ver mais</a>
+                </div>
+            </div>
         </section>
     </main>
     <a href="#home" class="back-to-top">Voltar ao topo</a>
