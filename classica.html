@@ -4,7 +4,306 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Músicas</title>
+    <style>
+    /* ==========================================
+   Configurações Gerais e Cores
+   ========================================== */
+body {
+    background-color: #fcf6f5; /* Um fundo off-white levemente quente */
+    font-family: 'Georgia', 'Times New Roman', serif; /* Fonte clássica e elegante */
+    color: #4a3b32; /* Marrom escuro acinzentado para uma leitura suave, evitando o preto puro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container Principal (Card) */
+.card {
+    background-color: #ffffff;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(220, 180, 185, 0.3); /* Sombra suave em tom rosé */
+    border: 1px solid #f2d6d8;
+    margin: 20px auto;
+}
+
+/* ==========================================
+   Tipografia (Títulos e Textos)
+   ========================================== */
+h1 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 2.8rem;
+    color: #b56576; /* Rosa queimado elegante */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    border-bottom: 2px double #e8b4b8; /* Linha dupla clássica */
+    padding-bottom: 15px;
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #c08081; /* Rosa pastel escuro */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 4px solid #e8b4b8; /* Detalhe lateral elegante */
+    padding-left: 15px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #9d5360; /* Rosa mais profundo para destacar os títulos das músicas */
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Estilo para os Links de Fontes/Wikipedia */
+p:has(text) { /* Seletor simples para os links em formato de texto */
+    font-size: 0.85rem;
+    color: #b56576;
+    word-break: break-all;
+    opacity: 0.8;
+}
+
+/* Caso queira transformar esses textos de link em links reais no HTML depois */
+a {
+    color: #b56576;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #9d5360;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   Imagens (Instrumentos)
+   ========================================== */
+/* Container simulado para as imagens ficarem harmoniosas */
+img {
+    width: 21%; /* Distribui as 4 imagens lado a lado com espaço */
+    max-height: 150px;
+    object-fit: contain;
+    background-color: #fffbfb;
+    border: 1px solid #f2d6d8;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 10px 1%;
+    box-shadow: 0 4px 10px rgba(220, 180, 185, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: translateY(-5px); /* Efeito flutuante ao passar o mouse */
+    box-shadow: 0 8px 15px rgba(181, 101, 118, 0.3);
+}
+
+/* Responsividade para telas menores (Celulares) */
+@media (max-width: 600px) {
+    .card {
+        padding: 20px;
+    }
     
+    img {
+        width: 45%; /* Fica em grade de 2x2 no celular */
+        margin: 10px 2%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/*menu*/
+/* ==========================================
+   Configurações Globais e Variáveis de Cores
+   ========================================== */
+:root {
+    --cor-fundo: #fcf8f7;
+    --cor-texto: #2d2d2d;
+    --cor-primaria: #b56576;       /* Rosa elegante para os detalhes principais */
+    --cor-secundaria: #e5c1c5;     /* Tom de rosa pastel para transições */
+    --cor-nav-fundo: #ffffff;
+    --font-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    font-family: var(--font-principal);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Faz a rolagem suave ao clicar nos links do menu */
+}
+
+/* ==========================================
+   Menu de Navegação (Header)
+   ========================================== */
+header {
+    background-color: var(--cor-nav-fundo);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+/* Container dos links */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav .menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Efeito Hover nos links do menu */
+nav .menu a:hover {
+    color: var(--cor-primaria);
+    background-color: #fff0f2;
+}
+
+/* ==========================================
+   Conteúdo Principal (Main e Sections)
+   ========================================== */
+/* Espaçamento superior para o conteúdo não ficar sob o menu fixo */
+main.menu {
+    display: block; /* Corrigindo a classe "menu" que estava duplicada no HTML */
+    margin-top: 80px; 
+    padding: 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    background: #ffffff;
+    margin-bottom: 40px;
+    padding: 60px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(229, 193, 197, 0.2);
+    border: 1px solid #f2e2e4;
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-3px); /* Leve elevação interativa */
+}
+
+/* Estilo para os Títulos de cada Seção */
+section h1 {
+    font-size: 2.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Linha decorativa embaixo de cada título */
+section h1::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 4px;
+    background-color: var(--cor-secundaria);
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+/* ==========================================
+   Botão Voltar ao Topo
+   ========================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(181, 101, 118, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top:hover {
+    background-color: #9d5360;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(181, 101, 118, 0.6);
+}
+
+/* ==========================================
+   Responsividade (Telas menores)
+   ========================================== */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px;
+    }
+    
+    nav .menu {
+        gap: 10px;
+    }
+    
+    nav .menu a {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+    
+    main.menu {
+        margin-top: 110px; /* Mais espaço para o menu que quebra em linhas */
+    }
+    
+    section {
+        padding: 40px 20px;
+    }
+    
+    section h1 {
+        font-size: 2rem;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}
+</style>
+
 </head>
 <body>
 <section id="musicaclassica">
