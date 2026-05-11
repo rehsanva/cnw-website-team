@@ -1,0 +1,630 @@
+@font-face {
+    font-family: "House";
+    src: url(fontes/Love\ House.otf);
+}
+
+@font-face {
+    font-family: "Christmas";
+    src: url(fontes/Love\ Christmas.otf);
+}
+
+@font-face {
+    font-family: "Perfect";
+    src: url(fontes/KGPerfectPenmanship.otf);
+}
+
+:root {
+    /* Variáveis Globais: ADICIONADAS */
+    --text-color: #555;
+    /* Cor para texto do body */
+    --pine: #F3E5F5;
+    /* Cor para o fundo do menu (Lilás) */
+    --active-btn: #D1C4E9;
+    /* Cor de fundo do botão ativo/hover (Lilás escuro) */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-color);
+    /* SOLUÇÃO 1: Adicionar padding para compensar a altura do menu fixo (52px + espaço extra) */
+    padding-top: 60px;
+}
+
+
+nav {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* SOLUÇÃO 2: Variável --pine agora está definida */
+    background-color: var(--pine);
+    color: #5e3c58;
+    /* Mudei para uma cor do tema */
+    padding: 0 10px;
+    height: 52px;
+}
+
+nav ul {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Essa é toda a parte do menu */
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #5e3c58;
+    font-family: 'House', sans-serif;
+    font-size: 1.4rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--active-btn);
+    color: #5e3c58;
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 80px 20px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fim do Menu*/
+
+/* Cores de fundo para cada seção */
+
+#hobbies {
+    background-color: #f5c6e7;
+
+}
+
+#sobremim {
+    background-color: #ffedb7;
+    /* Amarelo/Creme pastel */
+}
+
+#filmes {
+    background-color: #F3E5F5;
+    /* Lilás suave */
+}
+
+#series {
+    background-color: #E3F2FD;
+    /* Azul bebê suave */
+}
+
+#musica {
+    background-color: #E8F5E9;
+    /* Verde menta suave */
+}
+
+#fotos {
+    background-color: #FCE4EC;
+    /* Rosa um pouco mais forte */
+}
+
+/* Fim das cores de fundo */
+
+/*estilização da home*/
+h1 {
+    font-family: "Christmas";
+    font-size: 1.5rem;
+    color: #5e3c58;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+h5 {
+    font-family: "house";
+    color: #422641
+}
+
+.hobbies-content-left {
+    max-width: 90%;
+    text-align: left;
+}
+
+.hobbies-image-right img {
+    max-width: 600px;
+    height: auto;
+    text-align: right;
+}
+
+#hobbies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.hobbies-image-right {
+    max-width: 45%;
+    text-align: right;
+}
+
+
+/*fim da estilização da home*/
+
+/* Estilização do Sobre Mim*/
+
+h1{
+     font-size: 2.9em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    font-family: "Perfect";
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #5e3c58;
+    margin-bottom: 15px;
+}
+
+.sobremim-content-right {
+    max-width: 45%;
+    text-align: right;
+}
+
+.sobremim-image-left img {
+    max-width: 45%;
+    height: auto;
+    text-align: left;
+
+}
+
+
+
+.sobremim-image-left {
+    max-width: 45%;
+    text-align: right;
+}
+
+.sobremim-image-left img {
+    max-width: 70%;
+    height: auto;
+}
+
+
+.section-title-sobremim {
+    font-family: "Christmas"; 
+    font-size: 3.9em; 
+    color: #5e3c58;
+    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3.9em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sobremim-layout {
+    display: flex;
+    flex-direction: row;        
+    justify-content: space-around; 
+    align-items: center;        
+    width: 100%;            
+    max-width: 1000px;
+}
+.sobremim-content {
+    max-width: 45%; 
+    text-align: left;
+    padding-right: 20px; 
+}
+
+#sobremim .container {
+    max-width: 45%;
+    text-align: center; 
+}
+
+#sobremim .container img {
+    max-width: 70%;
+    height: auto;
+}
+.filmes-text{
+    font-family: 'Perfect', sans-serif;
+    font-size: 1.2rem;
+    color: #5e3c58;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: -28px;
+}
+
+.series-text{
+    font-family: 'Perfect', sans-serif;
+    font-size: 1.2rem;
+    color: #5e3c58;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: -28px;
+}
+/* Fim da estilização do Sobre Mim*/
+
+/*Estilização dos Filmes e series*/
+/*Estilo Polaroid*/
+
+
+.polaroid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1200px;
+    padding-bottom: 200px; 
+}
+
+
+.polaroid {
+    background-color: #fff;
+    padding: 12px 12px 50px 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, max-height 0.5s ease-out, box-shadow 0.3s; 
+    position: relative;
+    width: 240px;
+    text-align: center;
+    max-height: 350px; 
+    overflow: hidden; 
+    transform: rotate(0deg); 
+}
+
+.polaroid:nth-child(odd) { transform: rotate(2deg); }
+.polaroid:nth-child(even) { transform: rotate(-2deg); }
+
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-10px);
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-height: 1200px; 
+}
+
+.polaroid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #eee;
+}
+
+
+.polaroid-caption {
+    position: relative; 
+    margin-top: 5px; 
+    margin-bottom: 10px; 
+    width: 100%;
+    text-align: center;
+    font-family:"perfect"; 
+    font-size: 1.6rem;
+    color: #333;
+}
+.polaroid-extra-text {
+    max-height: 0; 
+    opacity: 0; 
+    padding: 0 10px; 
+    margin-top: 5px; 
+    text-align: justify;
+    color: var(--text-color); 
+    font-size: 0.9em;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+.polaroid:hover .polaroid-extra-text {
+    max-height: 700px; 
+    opacity: 1; 
+    padding: 10px 10px; 
+}
+
+.music-layout {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .circle-profile {
+            width: 250px;
+            height: 250px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .grid-quadrados {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .quadrado {
+            background: rgba(255,255,255,0.6);
+            padding: 10px;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+/* --- ESTILOS PARA A SEÇÃO DE MÚSICA (#musica) --- */
+
+.music-layout {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-profile {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.grid-quadrados {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.quadrado {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    width: 160px;
+    height: 200px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start; 
+    text-align: center; 
+    font-family: 'Perfect', sans-serif;
+    color: #5e3c58;
+    font-size: 0.85rem; 
+    overflow: hidden;
+    margin-top: -10px;
+}
+
+.quadrado img {
+    width: 100%; 
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 8cqmin;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.musica-text {
+    font-family: 'Perfect', sans-serif;
+    font-size: 1.2rem;
+    color: #5e3c58;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    top: -10px;
+}
+.nome-cantores{
+    font-family: 'Perfect', sans-serif;
+    font-size: 1.2rem;
+    color: #5e3c58;
+    text-align: center;
+    width: 100%;
+    margin-top: -22px; /* Suba o texto */
+    margin-bottom: 20px; /* Ajuste o espaçamento inferior */
+}
+
+
+/* Galeria VSCO*/
+
+
+.fotos-text{
+    font-family: 'Perfect', sans-serif;
+    font-size: 1.2rem;
+    color: #5e3c58;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: -28px;
+}
+
+.vsco-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+    margin-bottom: 10px;
+}
+
+
+
+.music-layout {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 50px; 
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+.vsco-camera-block {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    max-width: 300px; 
+}
+
+
+.vsco-profile img {
+    width: 200px; 
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.btn-vsco { 
+    text-decoration: none;
+    font-family: 'Perfect';
+    color: #5e3c58;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    border: 2px solid #5e3c58;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.btn-vsco:hover {
+    background-color: #E3F2FD; 
+}
+
+
+.vsco-profile {
+    display: block; 
+    margin-bottom: 10px;
+}
+/* Responsividade */
+        @media (max-width: 768px) {
+            .home-content, .sobre-content, .music-layout {
+                flex-direction: column;
+                text-align: center;
+            }
+            .section-title { font-size: 2.5rem; }
+            .intro-text h1 { font-size: 3rem; }
+        }
+
+@media (max-width: 768px) {
+    
+  
+    section {
+        padding: 40px 10px; 
+        min-height: auto; 
+    }
+    
+    h1 {
+        font-size: 2.5em; 
+    }
+
+
+    .menu-container {
+        gap: 10px;
+        justify-content: space-around;
+        padding: 5px 0;
+    }
+    nav a {
+        font-size: 1rem; 
+        padding: 5px 8px;
+    }
+
+    
+    #hobbies, .sobremim-layout {
+        flex-direction: column; 
+        text-align: center;
+    }
+    .hobbies-content-left, .hobbies-image-right, .sobremim-content, .sobremim-image-left {
+        max-width: 90%; 
+        width: 100%;
+        text-align: center;
+    }
+    .hobbies-image-right img, .sobremim-image-left img {
+        max-width: 80%; 
+        margin-top: 20px;
+    }
+
+    
+    .polaroid-container {
+        gap: 20px;
+        padding-bottom: 50px; 
+    }
+    .polaroid {
+        width: 90%; 
+        max-height: 450px; 
+        
+        transform: none !important; 
+    }
+    .polaroid:hover {
+        transform: translateY(-5px) !important; 
+    }
+    
+    .music-layout {
+        flex-direction: column; 
+        gap: 30px;
+    }
+    .photo-profile img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+    }
+    .grid-quadrados {
+        grid-template-columns: 1fr; 
+        width: 100%;
+        max-width: 300px;
+    }
+    .quadrado {
+        width: 100%; 
+        height: auto;
+    }
+
+    
+    #fotos .music-layout { 
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .vsco-profile {
+        width: 100%;
+        align-items: center;
+    }
+    .vsco-profile img {
+        width: 200px; 
+    }
+    
+    .grid-quadrados {
+        grid-template-columns: 1fr; 
+    }
+}
