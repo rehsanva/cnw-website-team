@@ -1,178 +1,637 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sertanejo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sertanejo | Music World</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1b1b1b;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(27, 27, 27, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #facc15;
+    }
+
+    .logo span {
+      color: #22c55e;
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .menu a:hover {
+      color: #facc15;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 8%;
+
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.8)),
+        url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1470&auto=format&fit=crop');
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: #facc15;
+    }
+
+    .hero p {
+      color: #e5e5e5;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, #22c55e, #16a34a);
+      color: white;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.4s;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      color: #facc15;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #d4d4d4;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    /* SOBRE */
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      color: #22c55e;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #e5e5e5;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* ARTISTAS */
+
+    .artists {
+      background: #222;
+    }
+
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .artist-card {
+      background: #2d2d2d;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: 0.4s;
+      border-top: 5px solid #facc15;
+    }
+
+    .artist-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(250, 204, 21, 0.2);
+    }
+
+    .artist-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .artist-card h3 {
+      color: #22c55e;
+      margin-bottom: 10px;
+    }
+
+    .artist-card p {
+      color: #d4d4d4;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* MUSICAS */
+
+    .music-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .music-card {
+      background: #2d2d2d;
+      padding: 35px;
+      border-radius: 20px;
+      border-left: 6px solid #22c55e;
+      transition: 0.4s;
+    }
+
+    .music-card:hover {
+      transform: translateX(10px);
+    }
+
+    .music-card h3 {
+      font-size: 1.5rem;
+      color: #facc15;
+      margin-bottom: 15px;
+    }
+
+    .music-card p {
+      color: #e5e5e5;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    /* CURIOSIDADES */
+
+    .facts {
+      background: #222;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .fact-box {
+      background: #2d2d2d;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .fact-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .fact-box h3 {
+      font-size: 2.5rem;
+      color: #facc15;
+      margin-bottom: 15px;
+    }
+
+    .fact-box p {
+      color: #d4d4d4;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer p {
+      color: #999;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 768px) {
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+
+      .menu {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .menu a {
+        font-size: 0.9rem;
+      }
+
+      .artist-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
 
-        <h1 style="text-align: center;">Sertanejo</h1>
-        <br>
-        <br>
-        <div class="logo">
-            
-        </div>
-        <div class="menu-toggle" id="menu-toggle">
-            
-        </div>
-        <nav>
-            <ul id="nav-links">
-                <li><a href="#historia"> <i class="fas fa-guitar"></i></i>História </a></li>
-                <li><a href="#caracteristicas"><i class="fas fa-star"></i> Características </a></li>
-                <li><a href="#artistas"><i class="fas fa-hat-cowboy"></i></i></i> Artistas </a></li>
-                <li><a href="#musicas"><i class="fas fa-microphone-alt"></i></i> Músicas </a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- HEADER -->
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1></h1>
-            <p></p>
-            <a href="#musicas" class="btn"><i class="fas fa-ticket-alt"></i> </a>
-        </div>
-    </section>
+  <header>
 
-    <!-- História -->
-    <section id="historia">
-        <h2 class="section-title">História</h2>
-        <p class="subtitle">Uns dos generos músicas mais ouvidos do Brasil</p>
-        <div class="sobre-grid">
-            <div class="sobre-texto">
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Tudo começou com Cornélio Pires, um folclorista que, em 1929, convenceu uma gravadora a registrar as modas de viola do interior.</strong> </p>
-                <br>
-                <p><i class="fas fa-star"></i> <strong>Tinham três principais características do sertanejo: a era raiz, romantica e universitário</strong> </p>
-                <br>
-                <p><i class="fas fa-clock"></i> <strong>Existem mais tipos de sertanejo e também veremos muito mais sobre sertanejo aos próximos tópicos!!</strong> </p>
-                <p style="margin-top:15px;"></p>
-            </div>
-            <div class="sobre-imagem">
-                <i class="fas fa-corn"></i> 
-            </div>
-        </div>
-    </section>
-    <br>
-    <br>
+    <nav>
 
-    <!-- Características -->
-    <section id="caracteristicas">
-        <h2 class="section-title">Características</h2>
-        <p class="subtitle">As principais características de cada era do sertanejo</p>
-        <div class="cards">
-            <div class="card">
-                <div class="card-img" style="background: linear-gradient(135deg, #5D4037, #caa293);">
-                    
-                </div>
-                <div class="card-body">
-                    <h3>A era Raiz(1929-1950)</h3>
-                    <br>
-                    <p>O foco era a vida no campo e a cultura do caipira tradicional.
-                        A viola caipira dominava o som, acompanhando causos e modas de viola.
-                        As letras falavam de natureza, religião e a dura lida com o gado.
-                        Artistas como Cornélio Pires e Tião Carreiro foram os grandes pioneiros.
-                        Era uma música puramente acústica.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background: linear-gradient(135deg, #BF360C, #f1a325);">
-                    
-                </div>
-                <div class="card-body">
-                    <h3>A era Romântica(1960-1970)</h3>
-                    <br>
-                    <p>A fase das luzes, dos cabelos mullets e das baladas sentimentais poderosas.
-                        Instrumentos elétricos e sintetizadores substituíram a simplicidade da viola.
-                        O amor impossível e a paixão viraram os temas principais das letras.
-                        Chitãozinho & Xororó e Zezé Di Camargo levaram o gênero aos estádios.
-                        O sertanejo se tornou pop e dominou a indústria fonográfica nacional.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background: linear-gradient(135deg, #e7b5aa, #3E2723);">
-                    
-                </div>
-                <div class="card-body">
-                    <h3>A era Universitária(1980-até hoje)</h3>
-                    <br>
-                    <p>A música acelerou para conquistar os jovens e as festas de peão.
-                        As letras ficaram mais leves, focando em baladas, bebedeira e paquera.
-                        A sanfona voltou com força, mas misturada a uma batida muito agitada.
-                        Jorge & Mateus e Luan Santana transformaram o gênero em puro entretenimento.
-                        O foco mudou do drama romântico para a curtição e o refrão chiclete.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <br>
-    <br>
+      <div class="logo">
+        Music<span>World</span>
+      </div>
 
-    <!-- Artistas -->
-    <section id="artistas">
-        <h2 class="section-title">Artistas</h2>
-        <p class="subtitle">O cantor(a) mais conhecido e representativo de cada era</p>
-        <div class="artistas-grid">
-            <div class="artista-card">
-                <div class="menu-item">
-                <div class="menu-icone"><i class="fas fa-corn"></i></div>
-                <div class="menu-info">
-                    <h4>Tião Carreiro</h4>
-                    <p>O mestre do pagode de viola que definiu o som da terra.</p>
-                    
-                </div>
-            </div>
-            <br>
-            <div class="menu-item">
-                <div class="menu-icone"><i class="fas fa-corn"></i></div>
-                <div class="menu-info">
-                    <h4>Zezé Di Camargo</h4>
-                    <p>A voz que simboliza o auge das baladas dramáticas e potentes.</p>
-                    
-                </div>
-            </div>
-            <br>
-            <div class="menu-item">
-                <div class="menu-icone"><i class="fas fa-corn"></i></div>
-                <div class="menu-info">
-                    <h4>Gusttavo Lima</h4>
-                    <p>O "Embaixador" que transformou o gênero em um espetáculo de arena e festa.</p>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <br>
-    <br>
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#artistas">Artistas</a></li>
+        <li><a href="#musicas">Músicas</a></li>
+      </ul>
 
-    <!-- Músicas -->
-    <section id="musicas">
-        <h2 class="section-title">Músicas</h2>
-        <p class="subtitle">A músicas mais conhecida do sertanejo de cada era</p>
-        <div class="musicas-grid">
-        </div>
-            <div class="ticket-card destaque">
-                <h3>O Menino da Porteira (Sérgio Reis)</h3>
-                <p>O Menino da Porteira transcendeu a música e se tornou um símbolo cultural do "ser sertanejo".</p>
-                <a href="https://www.youtube.com/watch?v=v13QWNeO24o" class="btn">Assistir</a>
-        </div>
-        <br>
-            <div class="ticket-card">
-                <h3>Evidências (Chitãozinho & Xororó)</h3>
-                <p>É considerada o "hino nacional não oficial" do Brasil.</p>
-                <a href="https://www.youtube.com/watch?v=ePjtnSPFWK8" class="btn">Assistir</a>
-            </div>
-        </div>
-        <br>
-        <div class="ticket-card">
-                <h3>Ai Se Eu Te Pego (Michel Teló) </h3>
-                <p>Foi o momento em que o sertanejo rompeu fronteiras internacionais, batendo recordes de visualizações e paradas globais.</p>
-                <a href="https://www.youtube.com/watch?v=hcm55lU9knw" class="btn">Assistir</a>
-        </div>
-        <br>
-    </section>
+    </nav>
 
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        O coração do
+        <span>Sertanejo</span>
+      </h1>
+
+      <p>
+        O sertanejo representa emoções, histórias de amor,
+        vida no campo e a cultura brasileira através de músicas
+        que conquistaram milhões de fãs.
+      </p>
+
+      <a href="#sobre" class="hero-btn">
+        Explorar conteúdo
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+
+  <section id="sobre">
+
+    <div class="section-title">
+
+      <h2>Sobre o Sertanejo</h2>
+
+      <p>
+        O sertanejo é um dos estilos musicais mais populares do Brasil,
+        conhecido por letras emocionantes e melodias marcantes.
+      </p>
+
+    </div>
+
+    <div class="about">
+
+      <img
+        src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1470&auto=format&fit=crop"
+        alt="Show sertanejo">
+
+      <div class="about-text">
+
+        <h3>Origem e evolução</h3>
+
+        <p>
+          O sertanejo surgiu inspirado na música caipira tradicional,
+          retratando a vida no interior, os costumes rurais
+          e os sentimentos do povo brasileiro.
+        </p>
+
+        <p>
+          Com o passar dos anos, o gênero evoluiu para diferentes estilos,
+          como sertanejo universitário, romântico e moderno.
+        </p>
+
+        <p>
+          Atualmente o sertanejo domina rádios, plataformas digitais
+          e grandes festivais musicais em todo o Brasil.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ARTISTAS -->
+
+  <section class="artists" id="artistas">
+
+    <div class="section-title">
+
+      <h2>Artistas Sertanejos Famosos</h2>
+
+      <p>
+        Conheça alguns dos maiores nomes da música sertaneja brasileira.
+      </p>
+
+    </div>
+
+    <div class="artist-grid">
+
+      <div class="artist-card">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Maiara_e_Maraisa.jpg"
+          alt="Maiara e Maraisa">
+
+        <h3>Maiara & Maraisa</h3>
+
+        <p>
+          Dupla sertaneja conhecida por músicas românticas,
+          emocionantes e grande sucesso nacional.
+        </p>
+
+      </div>
+
+      <div class="artist-card">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Jorge_e_Mateus_2017.jpg"
+          alt="Jorge e Mateus">
+
+        <h3>Jorge & Mateus</h3>
+
+        <p>
+          Uma das duplas mais populares do sertanejo universitário,
+          acumulando milhões de fãs e sucessos.
+        </p>
+
+      </div>
+
+      <div class="artist-card">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/63/Gusttavo_Lima_2022.jpg"
+          alt="Gusttavo Lima">
+
+        <h3>Gusttavo Lima</h3>
+
+        <p>
+          Conhecido como “Embaixador”, é um dos maiores artistas
+          sertanejos da atualidade.
+        </p>
+
+      </div>
+
+      <div class="artist-card">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/03/Marilia_Mendonca_2019.jpg"
+          alt="Marília Mendonça">
+
+        <h3>Marília Mendonça</h3>
+
+        <p>
+          Considerada a Rainha da Sofrência,
+          marcou o sertanejo com letras emocionantes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MUSICAS -->
+
+  <section id="musicas">
+
+    <div class="section-title">
+
+      <h2>Músicas Sertanejas Famosas</h2>
+
+      <p>
+        O sertanejo possui músicas emocionantes que marcaram gerações
+        e continuam fazendo sucesso em todo o Brasil.
+      </p>
+
+    </div>
+
+    <div class="music-list">
+
+      <div class="music-card">
+
+        <h3>Evidências — Chitãozinho & Xororó</h3>
+
+        <p>
+          Considerada um dos maiores clássicos da música brasileira,
+          “Evidências” emociona gerações com sua letra romântica.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>Infiel — Marília Mendonça</h3>
+
+        <p>
+          A música marcou o crescimento do feminejo
+          e transformou Marília Mendonça em fenômeno nacional.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>Cheirosa — Jorge & Mateus</h3>
+
+        <p>
+          Um dos grandes sucessos do sertanejo universitário moderno,
+          conhecido pela melodia envolvente e letra romântica.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>Balada Boa — Gusttavo Lima</h3>
+
+        <p>
+          Música que virou febre nacional e ajudou a popularizar
+          ainda mais o sertanejo moderno.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CURIOSIDADES -->
+
+  <section class="facts">
+
+    <div class="section-title">
+
+      <h2>Curiosidades</h2>
+
+      <p>
+        Descubra fatos interessantes sobre o sertanejo brasileiro.
+      </p>
+
+    </div>
+
+    <div class="fact-grid">
+
+      <div class="fact-box">
+        <h3>🎶</h3>
+        <p>O sertanejo é um dos gêneros mais ouvidos do Brasil.</p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🤠</h3>
+        <p>O estilo surgiu inspirado na música caipira tradicional.</p>
+      </div>
+
+      <div class="fact-box">
+        <h3>❤️</h3>
+        <p>As letras costumam falar sobre amor e relacionamentos.</p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🎤</h3>
+        <p>Grandes festivais sertanejos reúnem milhares de pessoas.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      Página desenvolvida para o projeto Music World • Sertanejo
+    </p>
+
+  </footer>
 
 </body>
+
 </html>
