@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Música Clássica | Music World</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(15,23,42,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .logo span{
+      color:#eab308;
+    }
+
+    .menu{
+      display:flex;
+      list-style:none;
+      gap:25px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .menu a:hover{
+      color:#eab308;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 8%;
+      background:
+      linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)),
+      url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1470&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero h1 span{
+      color:#eab308;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      line-height:1.8;
+      font-size:1.2rem;
+      margin-bottom:40px;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:linear-gradient(45deg,#eab308,#f59e0b);
+      color:white;
+      text-decoration:none;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(234,179,8,0.4);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:3rem;
+      color:#eab308;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#cbd5e1;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* =========================
+       SOBRE
+    ========================== */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .about-text h3{
+      font-size:2rem;
+      color:#facc15;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:20px;
+      text-align:justify;
+    }
+
+    /* =========================
+       INSTRUMENTOS
+    ========================== */
+
+    .instruments{
+      background:#111827;
+    }
+
+    .instrument-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .instrument-card{
+      background:#1e293b;
+      padding:25px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+      border-top:5px solid #eab308;
+    }
+
+    .instrument-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 30px rgba(234,179,8,0.2);
+    }
+
+    .instrument-card img{
+      width:100%;
+      height:200px;
+      object-fit:contain;
+      margin-bottom:20px;
+    }
+
+    .instrument-card h3{
+      margin-bottom:10px;
+      color:#facc15;
+    }
+
+    .instrument-card p{
+      color:#cbd5e1;
+      font-size:0.95rem;
+      line-height:1.6;
+    }
+
+    /* =========================
+       MÚSICAS
+    ========================== */
+
+    .music-list{
+      display:grid;
+      gap:30px;
+    }
+
+    .music-card{
+      background:#1e293b;
+      padding:35px;
+      border-radius:20px;
+      border-left:6px solid #eab308;
+      transition:0.4s;
+    }
+
+    .music-card:hover{
+      transform:translateX(10px);
+    }
+
+    .music-card h3{
+      font-size:1.5rem;
+      color:#facc15;
+      margin-bottom:15px;
+    }
+
+    .music-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+      text-align:justify;
+    }
+
+    /* =========================
+       CURIOSIDADES
+    ========================== */
+
+    .facts{
+      background:#111827;
+    }
+
+    .fact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .fact-box{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .fact-box:hover{
+      transform:translateY(-8px);
+    }
+
+    .fact-box h3{
+      font-size:2.5rem;
+      color:#eab308;
+      margin-bottom:15px;
+    }
+
+    .fact-box p{
+      color:#cbd5e1;
+      line-height:1.6;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      background:#020617;
+      text-align:center;
+      padding:40px 20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p{
+      color:#94a3b8;
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================== */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .section-title h2{
+        font-size:2.2rem;
+      }
+
+      .menu{
+        gap:15px;
+      }
+
+      .menu a{
+        font-size:0.9rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+    <!-- HEADER -->
+
+  <header>
+
+    <nav>
+
+      <div class="logo">
+        Music<span>World</span>
+      </div>
+
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#instrumentos">Instrumentos</a></li>
+        <li><a href="#musicas">Músicas</a></li>
+      </ul>
+
+    </nav>
+
+  </header>
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        O universo da
+        <span>Música Clássica</span>
+      </h1>
+       <p>
+        A música clássica representa tradição, sofisticação
+        e emoção. Compositores históricos transformaram
+        a música em uma verdadeira arte, criando obras
+        que continuam influenciando o mundo até hoje.
+      </p>
+      <a href="#sobre" class="hero-btn">
+        Explorar conteúdo
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+
+  <section id="sobre">
+
+    <div class="section-title">
+
+        <h2>Um pouco sobre a música clássica</h2>
+         <p>
+        Conheça a história, os instrumentos e as obras
+        que marcaram gerações e fizeram da música clássica
+        um patrimônio cultural mundial.
+        </p>
+           </div>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1470&auto=format&fit=crop">
+
+      <div class="about-text">
+
+        <h3>História e importância</h3>
+
+        <p>
+          A música clássica surgiu na Europa e evoluiu ao longo
+          dos séculos através de diferentes períodos musicais,
+          como Barroco, Classicismo e Romantismo.
+        </p>
+
+        <p>
+          Grandes compositores como Mozart, Beethoven,
+          Bach e Vivaldi ajudaram a construir obras-primas
+          conhecidas mundialmente.
+        </p>
+
+        <p>
+          Esse gênero musical é conhecido pela riqueza
+          instrumental, melodias complexas e grande impacto
+          emocional.
+        </p>
+
+        <p>A música clássica frequentemente se distingue pelo amplo uso que faz de instrumentos musicais de diferentes timbres e tonalidades, criando um som profundo e rico. Os diferentes movimentos da música clássica foram afetados principalmente pela invenção e modificação destes instrumentos ao longo do tempo. 
+        </p>
+       <!-- https://pt.wikipedia.org/wiki/M%C3%BAsica_cl%C3%A1ssica -->
+
+      </div>
+
+    </div>
+    </section>
+    <!-- INSTRUMENTOS -->
+
+  <section class="instruments" id="instrumentos">
+
+    <div class="section-title">
+
+      <h2>Instrumentos Clássicos</h2>
+
+      <p>
+        Uma orquestra composta por todas as famílias instrumentais acústicas: as cordas (violino, viola, violoncelo e contrabaixo), as madeiras (flauta, oboé, clarineta, fagote, etc.), os metais (trompete, trompa, trombone, tuba) e a percussão (tímpano, gongo, triângulo etc.). Saxofone e violão eventualmente também participam de uma orquestra, além de pianos, órgãos e celestas.
+        As orquestras clássicas utilizam diferentes famílias
+        instrumentais que criam sons sofisticados e harmoniosos.
+      </p>
+
+    </div>
+
+    <div class="instrument-grid">
+
+      <div class="instrument-card">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Violin_VL100.png/500px-Violin_VL100.png">
+
+        <h3>Violino</h3>
+
+        <p>
+          Um dos instrumentos mais importantes da música clássica,
+          conhecido pelo som elegante e expressivo.
+        </p>
+
+      </div>
+
+      <div class="instrument-card">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Recorder%2C_tenor_%28AM_1998.60.41-1%29.jpg/500px-Recorder%2C_tenor_%28AM_1998.60.41-1%29.jpg">
+
+        <h3>Flauta</h3>
+
+        <p>
+          Instrumento de sopro muito utilizado em apresentações
+          orquestrais e músicas barrocas.
+        </p>
+
+      </div>
+
+      <div class="instrument-card">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Trumpet_1.jpg/500px-Trumpet_1.jpg">
+
+        <h3>Trompete</h3>
+
+        <p>
+          Instrumento metálico que produz sons fortes e marcantes
+          dentro da orquestra.
+        </p>
+
+      </div>
+
+      <div class="instrument-card">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Triangel_%28Instrument%29.png">
+
+        <h3>Triângulo</h3>
+
+        <p>
+          Instrumento de percussão simples, mas importante para
+          complementar a harmonia musical.
+        </p>
+        <!-- https://pt.wikipedia.org/wiki/M%C3%BAsica_cl%C3%A1ssica#Instrumenta%C3%A7%C3%A3o -->
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MÚSICAS -->
+
+<section id="musicas">
+
+  <div class="section-title">
+
+    <h2>Músicas Clássicas Famosas</h2>
+
+    <p>
+      A música clássica atravessou séculos e continua presente
+      em filmes, desenhos, teatros e apresentações ao redor do mundo.
+      Muitas dessas composições se tornaram símbolos da história da música.
+    </p>
+
+  </div>
+
+  <div class="music-list">
+
+    <div class="music-card">
+
+      <h3>O Barbeiro de Sevilha — Gioachino Rossini</h3>
+
+      <p>
+        Foi baseada na comédia Le Barbier de Séville, do dramaturgo francês Pierre Beaumarchais, 
+        e se tornou uma das produções mais populares da música clássica. 
+        
+      </p>
+
+      <p>
+        Sua popularidade a tornou trilha sonora de desenhos animados,
+        como Pica-Pau (Woody Woodpecker) e Pernalonga (Bugs Bunny), tornando
+        a música clássica conhecida até mesmo pelo público infantil.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Rapsódia Húngara nº 2 — Franz Liszt</h3>
+
+      <p>
+        Considerada uma das obras mais difíceis para piano,
+        a composição apresenta mudanças rápidas de ritmo e
+        momentos intensos de emoção.
+      </p>
+
+
+        <p>O desenho animado Tom & Jerry
+           explorou muito as canções clássicas mais famosas.
+           Um dos episódios mais conhecidos é aquele em que o Tom
+           tenta fazer uma apresentação para piano, mas é constantemente
+           interrompido por Jerry. O episódio é chamado "The Cat Concerto".
+        </p>
+      
+    </div>
+
+    <div class="music-card">
+
+      <h3>Abertura de William Tell, ou Guilherme Tell — Rossini</h3>
+
+      <p>
+        Essa composição é uma das aberturas orquestrais mais
+        famosas da história e costuma representar cenas de ação,
+        corridas ou aventuras.
+      </p>
+  
+      <p>É frequentemente usada em desenhos animados e filmes,
+         seja para retratar uma cena em que o dia amanhece,
+         uma tempestade ou alguma correria dos personagens.
+      </p>
+        
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Valsa de A Bela Adormecida — Tchaikovsky</h3>
+
+      <p>
+        A Bela Adormecida é um ballet que estreou em 1890.
+        Sua composição foi inspirada no conto de fadas do 
+        francês Charles Perrault. Além disso, Aurora, Once 
+        Upon A Dream, é o nome de uma música de Tchaikovsky.
+      </p>
+
+      <p>
+        Tchaikovsky é considerado um dos maiores compositores
+        do romantismo e ficou conhecido pela capacidade de criar
+        músicas emocionantes e sofisticadas.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Primavera, de As Quatro Estações — Antonio Vivaldi</h3>
+
+      <p>
+        “Primavera” faz parte da obra “As Quatro Estações”,
+        composta por quatro concertos para violino e orquestra.
+        Compostas em 1723, "As Quatro estações", ou Le Quattro Stagioni.
+        Estão entre os mais populares da música barroca, tinham um programa
+        e acompanhavam sonetos ilustrativos para cada estação do ano.
+        Possivelmente foi o próprio Vivaldi que os escreveu.
+        Todos ficaram famosos, mas o destaque foi A Primavera,
+        uma das músicas clássicas mais conhecidas do mundo.
+      </p>
+ 
+      <p>
+        Cada concerto representa uma estação do ano, utilizando
+        sons e melodias que imitam elementos da natureza, como
+        pássaros, chuva e vento.
+      </p>
+
+      <p>
+        A composição se tornou uma das músicas barrocas mais
+        famosas e reconhecidas em todo o mundo.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Sinfonia nº 5 — Ludwig van Beethoven</h3>
+
+      <p>
+        Conhecida pelo famoso início “tan tan tan taaaan”,
+        essa sinfonia é considerada uma das obras mais importantes
+        da música clássica.
+      </p>
+
+      <p>
+        Beethoven criou a composição durante um período em que
+        já enfrentava sérios problemas auditivos, tornando a obra
+        ainda mais impressionante.
+      </p>
+
+      <p>
+        A Sinfonia nº 5 representa superação, intensidade e emoção,
+        sendo uma das composições mais executadas da história.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Canon em Ré Maior — Johann Pachelbel</h3>
+
+      <p>
+        Essa música ficou conhecida pela melodia suave e elegante,
+        sendo frequentemente utilizada em casamentos e cerimônias.
+      </p>
+
+      <p>
+        Sua estrutura harmônica influenciou diversas músicas modernas
+        e continua sendo uma das composições clássicas mais populares.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Danúbio Azul — Johann Strauss II</h3>
+
+      <p>
+        Uma das valsas mais famosas do mundo, conhecida pelo ritmo
+        sofisticado e elegante presente nos bailes europeus.
+      </p>
+
+      <p>
+        A composição também ficou famosa após aparecer no filme
+        “2001: Uma Odisseia no Espaço”.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Lago dos Cisnes — Tchaikovsky</h3>
+
+      <p>
+        Um dos balés mais conhecidos da história da música clássica,
+        apresentando melodias delicadas e emocionantes.
+      </p>
+
+      <p>
+        A obra conta a história da princesa Odette, transformada
+        em cisne por um feitiço, e se tornou referência mundial
+        no universo do ballet clássico.
+      </p>
+      <!-- https://www.brasilparalelo.com.br/artigos/musicas-classicas-mais-famosas -->
+    </div>
+
+  </div>
+
+</section>
+<!-- CURIOSIDADES -->
+
+  <section class="facts">
+
+    <div class="section-title">
+
+      <h2>Curiosidades</h2>
+
+      <p>
+        Descubra fatos interessantes sobre a música clássica
+        e sua influência mundial.
+      </p>
+
+    </div>
+
+    <div class="fact-grid">
+
+      <div class="fact-box">
+        <h3>🎼</h3>
+        <p>
+          Beethoven continuou compondo mesmo após perder a audição.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🎻</h3>
+        <p>
+          O violino é considerado um dos instrumentos mais difíceis de tocar.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🏛️</h3>
+        <p>
+          A música clássica influenciou praticamente todos os gêneros musicais modernos.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🌍</h3>
+        <p>
+          Grandes orquestras se apresentam em teatros históricos no mundo inteiro.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+       Música Clássica
+    </p>
+
+  </footer>
+
+
+        </div>
+</body>
+</html>
