@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(15,23,42,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .logo span{
+      color:#ec4899;
+    }
+
+    .menu{
+      display:flex;
+      list-style:none;
+      gap:25px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .menu a:hover{
+      color:#ec4899;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 8%;
+      background:
+      linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)),
+      url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1470&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero h1 span{
+      color:#ec4899;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      line-height:1.8;
+      font-size:1.2rem;
+      margin-bottom:40px;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:linear-gradient(45deg,#ec4899,#f472b6);
+      color:white;
+      text-decoration:none;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(236,72,153,0.4);
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:3rem;
+      color:#ec4899;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#cbd5e1;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* SOBRE */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .about-text h3{
+      font-size:2rem;
+      color:#f472b6;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:20px;
+      text-align:justify;
+    }
+
+    /* ARTISTAS */
+
+    .artists{
+      background:#111827;
+    }
+
+    .artist-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .artist-card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+      border-top:5px solid #ec4899;
+    }
+
+    .artist-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 30px rgba(236,72,153,0.2);
+    }
+
+    .artist-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      border-radius:15px;
+      margin-bottom:20px;
+    }
+
+    .artist-card h3{
+      color:#f472b6;
+      margin-bottom:10px;
+    }
+
+    .artist-card p{
+      color:#cbd5e1;
+      line-height:1.6;
+      font-size:0.95rem;
+    }
+
+    /* MÚSICAS */
+
+    .music-list{
+      display:grid;
+      gap:30px;
+    }
+
+    .music-card{
+      background:#1e293b;
+      padding:35px;
+      border-radius:20px;
+      border-left:6px solid #ec4899;
+      transition:0.4s;
+    }
+
+    .music-card:hover{
+      transform:translateX(10px);
+    }
+
+    .music-card h3{
+      font-size:1.5rem;
+      color:#f472b6;
+      margin-bottom:15px;
+    }
+
+    .music-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+      text-align:justify;
+    }
+
+    /* CURIOSIDADES */
+
+    .facts{
+      background:#111827;
+    }
+
+    .fact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .fact-box{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .fact-box:hover{
+      transform:translateY(-8px);
+    }
+
+    .fact-box h3{
+      font-size:2.5rem;
+      color:#ec4899;
+      margin-bottom:15px;
+    }
+
+    .fact-box p{
+      color:#cbd5e1;
+      line-height:1.6;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#020617;
+      text-align:center;
+      padding:40px 20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p{
+      color:#94a3b8;
+    }
+
+    /* RESPONSIVO */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .section-title h2{
+        font-size:2.2rem;
+      }
+
+      .menu{
+        gap:15px;
+      }
+
+      .menu a{
+        font-size:0.9rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <nav>
+
+      <div class="logo">
+        Universo do <span>POP</span>
+      </div>
+
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#artistas">Artistas</a></li>
+        <li><a href="#musicas">Músicas</a></li>
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        O universo da
+        <span>Música Pop</span>
+      </h1>
+
+      <p>
+        A música pop domina o cenário mundial com artistas
+        icônicos, coreografias marcantes e músicas que conquistam
+        milhões de pessoas todos os dias.
+      </p>
+
+      <a href="#sobre" class="hero-btn">
+        Explorar conteúdo
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+
+  <section id="sobre">
+
+    <div class="section-title">
+
+      <h2>Sobre o Pop</h2>
+
+      <p>
+        O gênero pop é um dos estilos musicais mais populares
+        do mundo e influencia moda, dança e cultura.
+      </p>
+
+    </div>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1470&auto=format&fit=crop">
+
+      <div class="about-text">
+
+        <h3>História e influência</h3>
+
+        <p>
+          A música pop surgiu a partir da expressão “popular music”
+          e ganhou força principalmente a partir dos anos 1950.
+        </p>
+
+        <p>
+          O gênero mistura elementos de diferentes estilos musicais,
+          criando músicas envolventes, comerciais e fáceis de ouvir.
+        </p>
+
+        <p>
+          Grandes artistas ajudaram o pop a se tornar um fenômeno
+          mundial, influenciando gerações através da música,
+          dança e moda.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ARTISTAS -->
+
+  <section class="artists" id="artistas">
+
+    <div class="section-title">
+
+      <h2>Artistas Pop Famosos</h2>
+
+      <p>
+        Conheça alguns dos artistas que marcaram a história
+        da música pop mundial.
+      </p>
+
+    </div>
+
+    <div class="artist-grid">
+
+      <div class="artist-card">
+
+        <img src="img/Michael Jackson Restored.jpg" alt="Michael Jackson">
+        <h3>Michael Jackson</h3>
+
+        <p>
+          Conhecido como o Rei do Pop, revolucionou a música
+          e os videoclipes com performances inesquecíveis.
+        </p>
+
+      </div>
+
+      <div class="artist-card">
+
+        <img src="img/Madonna, 1985, 𝘔𝘢𝘵𝘦𝘳𝘪𝘢𝘭 𝘨𝘪𝘳𝘭.jpg" alt="Madonna">
+        <h3>Madonna</h3>
+
+        <p>
+          Considerada a Rainha do Pop, influenciou gerações
+          com músicas, dança e estilo.
+        </p>
+
+      </div>
+
+      <div class="artist-card">
+
+        <img src="img/taylor.jpg" alt="Taylor Swift">
+        <h3>Taylor Swift</h3>
+
+        <p>
+          Uma das artistas mais populares da atualidade,
+          conhecida por letras emocionantes e turnês gigantescas.
+        </p>
+
+      </div>
+
+      <div class="artist-card">
+
+        <img src="img/sabrina.jpg" alt="Sabrina">
+
+        <h3>Sabrina Carpenter</h3>
+
+        <p>
+          Destaque mundial pela voz poderosa e sucessos
+          que dominam plataformas digitais.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MÚSICAS -->
+
+  <section id="musicas">
+
+    <div class="section-title">
+
+      <h2>Músicas Pop Famosas</h2>
+
+      <p>
+        O pop possui músicas que marcaram gerações e continuam
+        sendo ouvidas em todo o mundo.
+      </p>
+
+    </div>
+
+    <div class="music-list">
+
+      <div class="music-card">
+
+        <h3>Thriller — Michael Jackson</h3>
+
+        <p>
+          Uma das músicas mais famosas da história da música pop,
+          conhecida pelo videoclipe revolucionário e pela coreografia icônica.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>Like a Prayer — Madonna</h3>
+
+        <p>
+          Mistura elementos pop e gospel, tornando-se um dos maiores
+          sucessos da carreira de Madonna.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>Shake It Off — Taylor Swift</h3>
+
+        <p>
+          Música animada que conquistou milhões de fãs e se tornou
+          um dos maiores sucessos do pop moderno.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>Bad Romance — Lady Gaga</h3>
+
+        <p>
+          Ficou famosa pela produção criativa, figurinos marcantes
+          e estilo inovador da cantora.
+        </p>
+
+      </div>
+
+      <div class="music-card">
+
+        <h3>7 Rings — Ariana Grande</h3>
+
+        <p>
+          Um dos maiores hits da cantora, conhecido pelo ritmo moderno
+          e grande sucesso nas plataformas digitais.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CURIOSIDADES -->
+
+  <section class="facts">
+
+    <div class="section-title">
+
+      <h2>Curiosidades</h2>
+
+      <p>
+        Descubra fatos interessantes sobre a música pop
+        e seus artistas mundialmente famosos.
+      </p>
+
+    </div>
+
+    <div class="fact-grid">
+
+      <div class="fact-box">
+        <h3>🎤</h3>
+        <p>
+          Michael Jackson é considerado o artista pop mais influente da história.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🌍</h3>
+        <p>
+          O pop é um dos gêneros mais ouvidos no mundo inteiro.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>💃</h3>
+        <p>
+          Videoclipes ajudaram o pop a crescer mundialmente.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🎶</h3>
+        <p>
+          O gênero mistura elementos de rock, eletrônica, dance e hip hop.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      Página desenvolvida por Victoria Nunes.
+    </p>
+
+  </footer>
+
+</body>
+</html>
