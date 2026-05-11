@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock | Music World</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(15,23,42,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .logo span{
+      color:#ef4444;
+    }
+
+    .menu{
+      display:flex;
+      list-style:none;
+      gap:25px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .menu a:hover{
+      color:#ef4444;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 8%;
+
+      background:
+      linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)),
+      url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1470&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:900px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero h1 span{
+      color:#ef4444;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      line-height:1.8;
+      font-size:1.2rem;
+      margin-bottom:40px;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:linear-gradient(45deg,#ef4444,#dc2626);
+      color:white;
+      text-decoration:none;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(239,68,68,0.4);
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:3rem;
+      color:#ef4444;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#cbd5e1;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* SOBRE */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .about-text h3{
+      font-size:2rem;
+      color:#f87171;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:20px;
+      text-align:justify;
+    }
+
+    /* BANDAS */
+
+    .bands{
+      background:#111827;
+    }
+
+    .band-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .band-card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+      border-top:5px solid #ef4444;
+    }
+
+    .band-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 30px rgba(239,68,68,0.2);
+    }
+
+    .band-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      border-radius:15px;
+      margin-bottom:20px;
+    }
+
+    .band-card h3{
+      color:#f87171;
+      margin-bottom:10px;
+    }
+
+    .band-card p{
+      color:#cbd5e1;
+      line-height:1.6;
+      font-size:0.95rem;
+    }
+
+    /* MÚSICAS */
+
+    .music-list{
+      display:grid;
+      gap:30px;
+    }
+
+    .music-card{
+      background:#1e293b;
+      padding:35px;
+      border-radius:20px;
+      border-left:6px solid #ef4444;
+      transition:0.4s;
+    }
+
+    .music-card:hover{
+      transform:translateX(10px);
+    }
+
+    .music-card h3{
+      font-size:1.5rem;
+      color:#f87171;
+      margin-bottom:15px;
+    }
+
+    .music-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+      text-align:justify;
+    }
+
+    /* CURIOSIDADES */
+
+    .facts{
+      background:#111827;
+    }
+
+    .fact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .fact-box{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .fact-box:hover{
+      transform:translateY(-8px);
+    }
+
+    .fact-box h3{
+      font-size:2.5rem;
+      color:#ef4444;
+      margin-bottom:15px;
+    }
+
+    .fact-box p{
+      color:#cbd5e1;
+      line-height:1.6;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#020617;
+      text-align:center;
+      padding:40px 20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p{
+      color:#94a3b8;
+    }
+
+    /* RESPONSIVO */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .section-title h2{
+        font-size:2.2rem;
+      }
+
+      .menu{
+        gap:15px;
+      }
+
+      .menu a{
+        font-size:0.9rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <nav>
+
+      <div class="logo">
+        Music<span>World</span>
+      </div>
+
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#bandas">Bandas</a></li>
+        <li><a href="#musicas">Músicas</a></li>
+      </ul>
+
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        O poder do
+        <span>Rock</span>
+      </h1>
+
+      <p>
+        O rock revolucionou a música mundial com guitarras marcantes,
+        atitude, energia e letras que atravessaram gerações.
+      </p>
+
+      <a href="#sobre" class="hero-btn">
+        Explorar conteúdo
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+
+  <section id="sobre">
+
+    <div class="section-title">
+
+      <h2>Sobre o Rock</h2>
+
+      <p>
+        O rock é um dos gêneros musicais mais influentes da história,
+        conhecido por sua energia, atitude e impacto cultural.
+      </p>
+
+    </div>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1470&auto=format&fit=crop">
+
+      <div class="about-text">
+
+        <h3>História e influência</h3>
+
+        <p>
+          O rock surgiu nos Estados Unidos durante os anos 1950,
+          influenciado pelo blues, jazz e country.
+        </p>
+
+        <p>
+          O gênero ganhou força rapidamente e se espalhou pelo mundo,
+          criando diferentes estilos como hard rock, punk, metal
+          e rock alternativo.
+        </p>
+
+        <p>
+          Além da música, o rock influenciou moda, comportamento,
+          cinema e movimentos culturais importantes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- BANDAS -->
+
+  <section class="bands" id="bandas">
+
+    <div class="section-title">
+
+      <h2>Bandas de Rock Famosas</h2>
+
+      <p>
+        Conheça algumas das bandas que marcaram a história
+        do rock mundial.
+      </p>
+
+    </div>
+
+    <div class="band-grid">
+
+      <div class="band-card">
+
+        <img src="queen.jpg">
+
+        <h3>Queen</h3>
+
+        <p>
+          Banda britânica liderada por Freddie Mercury,
+          conhecida por músicas épicas e apresentações inesquecíveis.
+        </p>
+
+      </div>
+
+      <div class="band-card">
+
+        <img src="beatles.jpg">
+
+        <h3>The Beatles</h3>
+
+        <p>
+          Uma das bandas mais influentes da história,
+          revolucionando a música e a cultura mundial.
+        </p>
+
+      </div>
+
+      <div class="band-card">
+
+        <img src="nirvana.jpg">
+
+        <h3>Nirvana</h3>
+
+        <p>
+          Banda símbolo do grunge nos anos 90,
+          liderada pelo vocalista Kurt Cobain.
+        </p>
+
+      </div>
+
+      <div class="band-card">
+
+        <img src="guns roses.jpg">
+
+        <h3>Guns N' Roses</h3>
+
+        <p>
+          Conhecida por guitarras marcantes e grandes sucessos
+          do hard rock mundial.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MÚSICAS -->
+
+  <!-- MÚSICAS -->
+
+<section id="musicas">
+
+  <div class="section-title">
+
+    <h2>Músicas de Rock Famosas</h2>
+
+    <p>
+      O rock possui músicas históricas que atravessaram décadas,
+      marcaram gerações e continuam influenciando artistas no mundo inteiro.
+      Conheça algumas das canções mais importantes da história do rock.
+    </p>
+
+  </div>
+
+  <div class="music-list">
+
+    <div class="music-card">
+
+      <h3>Bohemian Rhapsody — Queen</h3>
+
+      <p>
+        Lançada em 1975 no álbum “A Night at the Opera”,
+        essa música revolucionou a indústria musical ao misturar
+        rock progressivo, ópera e balada em uma única composição.
+      </p>
+
+      <p>
+        Freddie Mercury criou uma estrutura inovadora e extremamente
+        diferente para a época, tornando a música uma das mais
+        importantes da história do rock mundial.
+      </p>
+
+      <p>
+        O videoclipe também ajudou a popularizar os clipes musicais
+        modernos, influenciando gerações futuras de artistas.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Smells Like Teen Spirit — Nirvana</h3>
+
+      <p>
+        Lançada em 1991, a música se tornou o maior símbolo
+        do movimento grunge e da juventude dos anos 90.
+      </p>
+
+      <p>
+        Com guitarras pesadas, energia intensa e vocais marcantes
+        de Kurt Cobain, a canção mudou o cenário do rock alternativo.
+      </p>
+
+      <p>
+        O sucesso mundial transformou o Nirvana em uma das bandas
+        mais influentes da história da música contemporânea.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Sweet Child O' Mine — Guns N' Roses</h3>
+
+      <p>
+        Conhecida pelo riff lendário criado por Slash,
+        essa música se tornou um dos maiores sucessos do hard rock.
+      </p>
+
+      <p>
+        Lançada em 1987, a canção mistura romantismo,
+        guitarras marcantes e a poderosa voz de Axl Rose.
+      </p>
+
+      <p>
+        Até hoje é considerada uma das músicas mais famosas
+        da história do rock e continua extremamente popular.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Hotel California — Eagles</h3>
+
+      <p>
+        Lançada em 1976, essa música ficou conhecida por sua melodia
+        envolvente, letra misteriosa e solo de guitarra histórico.
+      </p>
+
+      <p>
+        Muitos fãs acreditam que a música possui significados ocultos,
+        o que ajudou ainda mais a aumentar sua fama mundial.
+      </p>
+
+      <p>
+        “Hotel California” é considerada um dos maiores clássicos
+        do rock internacional.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Stairway to Heaven — Led Zeppelin</h3>
+
+      <p>
+        Essa canção é frequentemente considerada uma das melhores
+        músicas de rock de todos os tempos.
+      </p>
+
+      <p>
+        A composição começa de forma calma e cresce lentamente
+        até chegar em um dos solos de guitarra mais famosos da história.
+      </p>
+
+      <p>
+        O talento instrumental do Led Zeppelin transformou essa música
+        em um verdadeiro símbolo do rock clássico.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>We Will Rock You — Queen</h3>
+
+      <p>
+        Com batidas simples e um refrão inesquecível,
+        essa música se tornou extremamente popular em estádios,
+        shows e eventos esportivos.
+      </p>
+
+      <p>
+        A ideia da música era criar uma interação direta com o público,
+        algo que Freddie Mercury dominava perfeitamente nos palcos.
+      </p>
+
+      <p>
+        Até hoje é uma das músicas mais reconhecidas do planeta.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Imagine — John Lennon</h3>
+
+      <p>
+        “Imagine” é uma das músicas mais emocionantes e influentes
+        da história da música mundial.
+      </p>
+
+      <p>
+        A letra transmite mensagens de paz, união e esperança,
+        tornando-se um símbolo cultural em diferentes países.
+      </p>
+
+      <p>
+        Mesmo sendo mais suave, a música possui enorme importância
+        dentro da história do rock.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Nothing Else Matters — Metallica</h3>
+
+      <p>
+        Lançada em 1991, essa música mostrou um lado mais emocional
+        da banda Metallica.
+      </p>
+
+      <p>
+        A combinação entre guitarras suaves, letra sentimental
+        e crescimento instrumental tornou a canção um enorme sucesso.
+      </p>
+
+      <p>
+        É considerada uma das baladas mais famosas do rock e metal.
+      </p>
+
+    </div>
+
+    <div class="music-card">
+
+      <h3>Back In Black — AC/DC</h3>
+
+      <p>
+        Essa música marcou o retorno do AC/DC após um momento difícil
+        na história da banda.
+      </p>
+
+      <p>
+        Com riffs poderosos e energia intensa,
+        “Back In Black” se tornou um dos maiores clássicos do rock.
+      </p>
+
+      <p>
+        O álbum de mesmo nome está entre os mais vendidos da história.
+      </p>
+
+    </div>
+
+  
+
+  <!-- CURIOSIDADES -->
+
+  <section class="facts">
+
+    <div class="section-title">
+
+      <h2>Curiosidades</h2>
+
+      <p>
+        Descubra fatos interessantes sobre o universo do rock.
+      </p>
+
+    </div>
+
+    <div class="fact-grid">
+
+      <div class="fact-box">
+        <h3>🎸</h3>
+        <p>
+          A guitarra elétrica se tornou símbolo principal do rock.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🤘</h3>
+        <p>
+          O gesto “mão chifrada” virou símbolo mundial dos fãs de rock.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🌍</h3>
+        <p>
+          O rock influenciou moda, cinema e comportamento jovem.
+        </p>
+      </div>
+
+      <div class="fact-box">
+        <h3>🎶</h3>
+        <p>
+          Existem dezenas de subgêneros derivados do rock.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      Página desenvolvida para o projeto Music World • Rock
+    </p>
+
+  </footer>
+
+</body>
+</html>
